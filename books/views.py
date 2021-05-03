@@ -5,7 +5,9 @@ from .models import Book
 # Create your views here.
 
 def index(request):
-    books = Book.objects.all()
+    #books = Book.objects.all()
+    #want to retrive specific book, filter retrive array even it is one object
+    books = Book.objects.filter(categories__name__in=["web","it"])
     return render(request, "books/index.html", {
         "books" : books 
     })
